@@ -25,7 +25,7 @@ module.exports = {
       }
     }],
     'vue/singleline-html-element-content-newline': 'off',
-    'vue/multiline-html-element-content-newline':'off',
+    'vue/multiline-html-element-content-newline': 'off',
     'vue/name-property-casing': ['error', 'PascalCase'],
     'vue/no-v-html': 'off',
     'accessor-pairs': 2,
@@ -56,12 +56,7 @@ module.exports = {
       after: true
     }],
     'handle-callback-err': [2, '^(err|error)$'],
-    indent: [
-      2,
-      {
-        SwitchCase: 1
-      }
-    ],
+    indent: ["error", 2],
     'jsx-quotes': [2, 'prefer-single'],
     'key-spacing': [2, {
       beforeColon: false,
