@@ -1,8 +1,8 @@
 import request from '@/utils/request'
 
-export function addTeacher(data) {
+export function addCourse(data) {
   return request({
-    url: '/teacher/add-teacher',
+    url: '/course/add-course',
     method: 'post',
     data
   })
@@ -10,15 +10,15 @@ export function addTeacher(data) {
 
 export function getList(params) {
   return request({
-    url: '/teacher/list',
+    url: '/course/list',
     method: 'get',
     params
   })
 }
 
-export function deleteTeacher(id) {
+export function deleteCourse(id) {
   return request({
-    url: `/teacher/delete-teacher/${id}`,
+    url: `/course/delete-course/${id}`,
     method: 'delete'
   })
 }
