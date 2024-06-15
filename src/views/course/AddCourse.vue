@@ -7,7 +7,7 @@
       <el-form-item label="学分" prop="credit">
         <el-input v-model="course.credit" />
       </el-form-item>
-      <el-form-item label="教师" prop="teacherId">
+      <el-form-item label="教师Id" prop="teacherId">
         <el-input v-model="course.teacherId" />
       </el-form-item>
       <el-form-item>

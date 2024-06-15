@@ -5,6 +5,7 @@
   "scripts": {
     "lint": "vue-cli-service lint",
     "build:prod": "vue-cli-service build",
+    "build": "vue-cli-service build",
     "build:stage": "vue-cli-service build --mode staging",
     "dev": "vue-cli-service serve",
     "preview": "node build/index.js --preview"

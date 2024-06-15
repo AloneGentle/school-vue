@@ -4,8 +4,8 @@
       <el-form-item label="教师名称" prop="name">
         <el-input v-model="teacher.name" />
       </el-form-item>
-      <el-form-item label="电子邮箱" prop="email">
-        <el-input v-model="teacher.email" />
+      <el-form-item label="年龄" prop="age">
+        <el-input v-model="teacher.age" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm('teacherForm')">提交</el-button>
@@ -23,7 +23,7 @@ export default {
     return {
       teacher: {
         name: '',
-        email: ''
+        age: ''
       }
     }
   },

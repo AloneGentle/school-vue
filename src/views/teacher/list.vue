@@ -1,5 +1,14 @@
 <template>
   <div class="teacher-list">
+    <!-- 搜索框 -->
+    <el-input
+      v-model="searchQuery"
+      placeholder="搜索教师姓名"
+      style="margin-bottom: 20px; width: 300px;"
+      @input="fetchData"
+    >
+      <el-button slot="append" icon="el-icon-search" @click="fetchData" />
+    </el-input>
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -18,28 +27,49 @@
           {{ scope.row.name }}
         </template>
       </el-table-column>
-      <el-table-column align="center" label="电子邮箱">
+      <el-table-column align="center" label="年龄">
         <template slot-scope="scope">
-          {{ scope.row.email }}
+          {{ scope.row.age }}
         </template>
       </el-table-column>
       <el-table-column align="center" label="操作" width="150">
         <template slot-scope="scope">
+          <el-button type="primary" size="mini" @click="handleEdit(scope.row)">编辑</el-button>
           <el-button type="danger" size="mini" @click="handleDelete(scope.row.id)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
+    <el-dialog :visible.sync="editDialogVisible" title="编辑教师">
+      <el-form ref="editForm" :model="editForm">
+        <el-form-item label="教师名称">
+          <el-input v-model="editForm.name" />
+        </el-form-item>
+        <el-form-item label="年龄">
+          <el-input v-model="editForm.age" />
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="editDialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="submitEdit">确定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
-<script>
-import { getList, deleteTeacher } from '@/api/teacher'
+<script>import { getList, deleteTeacher, updateTeacher } from '@/api/teacher'
 
 export default {
   data() {
     return {
       list: null,
-      listLoading: true
+      listLoading: true,
+      editDialogVisible: false,
+      editForm: {
+        id: null,
+        name: '',
+        age: ''
+      },
+      searchQuery: ''
     }
   },
   created() {
@@ -78,6 +108,28 @@ export default {
         this.$message({
           type: 'info',
           message: '已取消删除'
+        })
+      })
+    },
+    handleEdit(row) {
+      this.editForm = { ...row }
+      this.editDialogVisible = true
+    },
+    submitEdit() {
+      updateTeacher(this.editForm.id, {
+        name: this.editForm.name,
+        age: this.editForm.age
+      }).then(() => {
+        this.$message({
+          type: 'success',
+          message: '编辑成功!'
+        })
+        this.editDialogVisible = false
+        this.fetchData()
+      }).catch(() => {
+        this.$message({
+          type: 'error',
+          message: '编辑失败'
         })
       })
     }

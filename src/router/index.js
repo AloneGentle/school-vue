@@ -52,7 +52,7 @@ export const constantRoutes = [
   {
     path: '/course',
     component: Layout,
-    redirect: '/course/list',
+    redirect: '/course',
     name: 'Course',
     meta: { title: '课程', icon: 'el-icon-s-help' },
     children: [
@@ -73,7 +73,7 @@ export const constantRoutes = [
   {
     path: '/student',
     component: Layout,
-    redirect: '/student/list',
+    redirect: '/student',
     name: 'Student',
     meta: { title: '学生', icon: 'el-icon-s-help' },
     children: [
@@ -88,6 +88,27 @@ export const constantRoutes = [
         name: 'AddStudent',
         component: () => import('@/views/student/AddStudent.vue'),
         meta: { title: '添加学生' }
+      }
+    ]
+  },
+  {
+    path: '/score',
+    component: Layout,
+    redirect: '/score',
+    name: 'Score',
+    meta: { title: '成绩', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'list',
+        name: 'ScoreList',
+        component: () => import('@/views/score/list'),
+        meta: { title: '成绩列表', icon: 'el-icon-s-help' }
+      },
+      {
+        path: 'add',
+        name: 'AddScore',
+        component: () => import('@/views/score/AddScore.vue'),
+        meta: { title: '添加成绩', icon: 'el-icon-s-help' }
       }
     ]
   },

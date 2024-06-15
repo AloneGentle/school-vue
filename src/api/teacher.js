@@ -16,6 +16,14 @@ export function getList(params) {
   })
 }
 
+export function updateTeacher(id, data) {
+  return request({
+    url: `/teacher/update-teacher/${id}`,
+    method: 'put',
+    data
+  })
+}
+
 export function deleteTeacher(id) {
   return request({
     url: `/teacher/delete-teacher/${id}`,

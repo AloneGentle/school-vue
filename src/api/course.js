@@ -16,6 +16,14 @@ export function getList(params) {
   })
 }
 
+export function updateCourse(id, data) {
+  return request({
+    url: `/course/update-course/${id}`,
+    method: 'put',
+    data
+  })
+}
+
 export function deleteCourse(id) {
   return request({
     url: `/course/delete-course/${id}`,
